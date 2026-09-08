@@ -1,0 +1,19 @@
+{
+  "scope": "Current thesis Chapters 1-5 define the algorithms; old Chapters 6 and 7 excluded",
+  "algorithms": {
+    "Algorithm 2": "tt_core.tt_svd",
+    "Algorithm 3": "tt_core.tt_round",
+    "Algorithm 4": "tt_core.randomized_range_finder",
+    "Algorithm 5": "tt_core.randomized_range_finder_power",
+    "Algorithm 6": "tt_core.randomized_svd",
+    "Algorithm 7": "tt_core.rtt_svd",
+    "equal-rank experiment postprocessing": "tt_core.rtt_svd_rounded",
+    "Proposition 5.5 sparse access": "sparse_rtt_svd.rtt_svd_sparse"
+  },
+  "experiment_count": 10,
+  "als_experiment_included": false,
+  "old_chapter_6_results_reused": false,
+  "old_chapter_7_claims_reused": false,
+  "figure_policy": "one combined design per experiment, PDF + 360-dpi PNG",
+  "data_policy": "aggregated JSON plus raw CSV"
+}

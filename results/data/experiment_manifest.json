@@ -1,0 +1,15 @@
+{
+  "figure_designs": [
+    "exp01_nearly_low_rank_noise",
+    "exp02_oversampling_combined",
+    "exp03_quality_vs_order_combined",
+    "exp04_sparse_runtime_combined",
+    "exp05_error_concentration_combined",
+    "exp06_rangefinder_bound",
+    "exp07_accuracy_vs_rank_combined",
+    "exp08_mode_size_exact_recovery_combined",
+    "exp09_singular_value_decay_combined",
+    "exp10_storage_accuracy_combined"
+  ],
+  "note": "Each design is saved once as PNG and once as PDF."
+}

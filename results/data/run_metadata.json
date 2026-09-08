@@ -1,0 +1,45 @@
+{
+  "title": "Randomized TT-SVD Ten-Experiment Suite, Chapters 1-5 aligned",
+  "run_profile": "thesis",
+  "base_seed": 42,
+  "experiments_requested": [
+    5
+  ],
+  "experiment_names": {
+    "1": "Nearly low-rank tensors with Gaussian perturbations",
+    "2": "Oversampling parameter study",
+    "3": "Approximation quality versus tensor order",
+    "4": "Sparse runtime versus tensor order",
+    "5": "Error concentration",
+    "6": "Gaussian range-finder bound validation",
+    "7": "Accuracy versus target TT-rank",
+    "8": "Mode-size scalability and exact recovery",
+    "9": "Singular-value decay across TT matricizations",
+    "10": "Storage-accuracy trade-off"
+  },
+  "profile_settings": {
+    "huber_trials": 16,
+    "general_trials": 10,
+    "concentration_trials": 500,
+    "bound_trials": 200,
+    "timing_trials": 5,
+    "timing_repeats": 3
+  },
+  "algorithm_implementation": "Chapter 5 Algorithm 7, right-to-left independent Gaussian sketches, followed by Chapter 3 core-only TT rounding for equal-rank comparisons",
+  "python_version": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy_version": "2.5.2",
+  "scipy_version": "1.18.1",
+  "matplotlib_version": "3.11.1",
+  "start_time": "2026-09-05 15:49:06",
+  "status": {
+    "5": {
+      "name": "Error concentration",
+      "status": "completed",
+      "elapsed_s": 5.188480799988611
+    }
+  },
+  "end_time": "2026-09-05 15:49:11",
+  "suite_elapsed_s": 5.1885555000044405,
+  "completed_experiments": 1
+}

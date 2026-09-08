@@ -1,0 +1,36 @@
+{
+  "experiment_order": {
+    "1": "Accuracy versus Bond Dimension",
+    "2": "Oversampling Parameter Study",
+    "3": "Runtime versus Tensor Order",
+    "4": "Scalability versus Mode Size",
+    "5": "Robustness to Additive Noise",
+    "6": "Comparison with TT-SVD and Randomized Tucker",
+    "7": "Singular Value Decay",
+    "8": "Error Concentration",
+    "9": "Storage-Accuracy Trade-off",
+    "10": "Gaussian Range-Finder Bound",
+    "11": "Sparse RTT-SVD Complexity versus Tensor Order"
+  },
+  "figure_stems": [
+    "exp01_accuracy_vs_bond_dimension",
+    "exp02_oversampling_parameter_study",
+    "exp03_runtime_vs_tensor_order",
+    "exp04_scalability_vs_mode_size",
+    "exp05_robustness_to_additive_noise",
+    "exp06_method_comparison",
+    "exp07_singular_value_decay",
+    "exp08_error_concentration",
+    "exp09_storage_accuracy_tradeoff",
+    "exp10_gaussian_rangefinder_bound",
+    "exp11_sparse_rtt_svd_complexity"
+  ],
+  "formats": [
+    "png",
+    "pdf"
+  ],
+  "data_formats": [
+    "json",
+    "csv"
+  ]
+}
