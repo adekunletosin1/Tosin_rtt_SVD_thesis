@@ -1,0 +1,56 @@
+{
+  "title": "Experiment 4: Sparse RTT-SVD Complexity versus Tensor Order",
+  "algorithm": "Chapter 5 Algorithm 7, coordinate-sparse implementation",
+  "theoretical_complexity": "O(d * (s^2 N + s^3 n))",
+  "mode_size_n": 16,
+  "nnz_N": 20000,
+  "target_rank_r": 4,
+  "oversampling_p": 5,
+  "sketch_rank_s": 9,
+  "orders": [
+    5,
+    6,
+    8,
+    10,
+    12,
+    14
+  ],
+  "n_tensors_per_order": 5,
+  "timing_repeats": 3,
+  "runtime_mean_s": [
+    0.030847226666325396,
+    0.06585470666759648,
+    0.09851918666487715,
+    0.1559206866659224,
+    0.18677335333389541,
+    0.2760056399992512
+  ],
+  "runtime_std_s": [
+    0.008670339701996809,
+    0.01405363509662266,
+    0.01626810653915385,
+    0.012428336968659585,
+    0.0125097885357463,
+    0.017626226000381662
+  ],
+  "time_per_mode_s": [
+    0.0061694453332650796,
+    0.010975784444599413,
+    0.012314898333109644,
+    0.01559206866659224,
+    0.015564446111157952,
+    0.019714688571375087
+  ],
+  "theoretical_work_units": [
+    8158320,
+    9789984,
+    13053312,
+    16316640,
+    19579968,
+    22843296
+  ],
+  "linear_fit_slope_s_per_mode": 0.02533386191777401,
+  "linear_fit_intercept_s": -0.09657360091328368,
+  "linear_fit_r_squared": 0.9771060456464886,
+  "timing_scope": "Coordinate-sparse Algorithm 7 only; no dense materialization and no TT-rounding in timed region."
+}

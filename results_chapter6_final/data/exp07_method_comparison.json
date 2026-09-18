@@ -1,0 +1,49 @@
+{
+  "title": "Experiment 7: Comparison with TT-SVD and Randomized Tucker",
+  "shape": [
+    12,
+    12,
+    12,
+    12
+  ],
+  "source_tt_rank": 10,
+  "target_rank": 4,
+  "p": 5,
+  "n_trials": 6,
+  "methods": [
+    "RTT-SVD",
+    "TT-SVD",
+    "Rand-Tucker"
+  ],
+  "error_mean": [
+    0.7225671755469993,
+    0.7080866048771614,
+    0.8920659461061834
+  ],
+  "error_std": [
+    0.007154328811909698,
+    0.0,
+    0.0060094172931452975
+  ],
+  "time_mean_s": [
+    0.0017297833328484558,
+    0.003181483332203546,
+    0.005071933332753058
+  ],
+  "time_std_s": [
+    0.0007830268857951715,
+    0.0006884916642746729,
+    0.0003105560569139098
+  ],
+  "storage": [
+    480,
+    480,
+    448
+  ],
+  "compression_ratio": [
+    43.2,
+    43.2,
+    46.285714285714285
+  ],
+  "tucker_algorithm": "Chapter 4 Algorithm 6 independently on each mode unfolding, followed by Tucker projection"
+}

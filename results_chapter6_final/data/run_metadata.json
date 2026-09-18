@@ -19,14 +19,14 @@
     "1": "Accuracy versus Bond Dimension",
     "2": "Oversampling Parameter Study",
     "3": "Runtime versus Tensor Order",
-    "4": "Scalability versus Mode Size",
-    "5": "Robustness to Additive Noise",
-    "6": "Comparison with TT-SVD and Randomized Tucker",
-    "7": "Singular Value Decay",
-    "8": "Error Concentration",
-    "9": "Storage-Accuracy Trade-off",
-    "10": "Gaussian Range-Finder Bound",
-    "11": "Sparse RTT-SVD Complexity versus Tensor Order"
+    "4": "Sparse RTT-SVD Complexity versus Tensor Order",
+    "5": "Scalability versus Mode Size",
+    "6": "Robustness to Additive Noise",
+    "7": "Comparison with TT-SVD and Randomized Tucker",
+    "8": "Singular Value Decay",
+    "9": "Error Concentration",
+    "10": "Storage-Accuracy Trade-off",
+    "11": "Gaussian Range-Finder Bound"
   },
   "algorithm_implementation": {
     "tt_svd": "Chapter 3 Algorithm 2",
@@ -45,64 +45,64 @@
   "numpy_version": "2.5.2",
   "scipy_version": "1.18.1",
   "matplotlib_version": "3.11.1",
-  "start_time": "2026-09-05 20:46:29",
+  "start_time": "2026-09-18 20:31:34",
   "status": {
     "1": {
       "name": "Accuracy versus Bond Dimension",
       "status": "completed",
-      "elapsed_s": 5.76479560000007
+      "elapsed_s": 6.013532599987229
     },
     "2": {
       "name": "Oversampling Parameter Study",
       "status": "completed",
-      "elapsed_s": 1.5017967999738175
+      "elapsed_s": 1.6346085999975912
     },
     "3": {
       "name": "Runtime versus Tensor Order",
       "status": "completed",
-      "elapsed_s": 7.132167300005676
+      "elapsed_s": 6.912346700002672
     },
     "4": {
-      "name": "Scalability versus Mode Size",
-      "status": "completed",
-      "elapsed_s": 7.771375200012699
-    },
-    "5": {
-      "name": "Robustness to Additive Noise",
-      "status": "completed",
-      "elapsed_s": 1.0199990999826696
-    },
-    "6": {
-      "name": "Comparison with TT-SVD and Randomized Tucker",
-      "status": "completed",
-      "elapsed_s": 0.8281450000067707
-    },
-    "7": {
-      "name": "Singular Value Decay",
-      "status": "completed",
-      "elapsed_s": 2.7092814999923576
-    },
-    "8": {
-      "name": "Error Concentration",
-      "status": "completed",
-      "elapsed_s": 3.904032799997367
-    },
-    "9": {
-      "name": "Storage-Accuracy Trade-off",
-      "status": "completed",
-      "elapsed_s": 1.6043386999808718
-    },
-    "10": {
-      "name": "Gaussian Range-Finder Bound",
-      "status": "completed",
-      "elapsed_s": 2.2634319000062533
-    },
-    "11": {
       "name": "Sparse RTT-SVD Complexity versus Tensor Order",
       "status": "completed",
-      "elapsed_s": 22.74260910000885
+      "elapsed_s": 18.450895600006334
+    },
+    "5": {
+      "name": "Scalability versus Mode Size",
+      "status": "completed",
+      "elapsed_s": 7.754823200011742
+    },
+    "6": {
+      "name": "Robustness to Additive Noise",
+      "status": "completed",
+      "elapsed_s": 0.9278772000106983
+    },
+    "7": {
+      "name": "Comparison with TT-SVD and Randomized Tucker",
+      "status": "completed",
+      "elapsed_s": 0.8792966000037268
+    },
+    "8": {
+      "name": "Singular Value Decay",
+      "status": "completed",
+      "elapsed_s": 2.8798182000027737
+    },
+    "9": {
+      "name": "Error Concentration",
+      "status": "completed",
+      "elapsed_s": 3.8471025000035297
+    },
+    "10": {
+      "name": "Storage-Accuracy Trade-off",
+      "status": "completed",
+      "elapsed_s": 1.5242965000070399
+    },
+    "11": {
+      "name": "Gaussian Range-Finder Bound",
+      "status": "completed",
+      "elapsed_s": 2.2306308999977773
     }
   },
-  "end_time": "2026-09-05 20:47:26",
-  "suite_elapsed_s": 57.24253819999285
+  "end_time": "2026-09-18 20:32:27",
+  "suite_elapsed_s": 53.056099199995515
 }
