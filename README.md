@@ -40,6 +40,7 @@ Tosin_rtt_SVD_thesis/
 └── results_chapter6_final/
     ├── data/
     └── figures/
+```
 
 ## Thesis-to-code map
 
