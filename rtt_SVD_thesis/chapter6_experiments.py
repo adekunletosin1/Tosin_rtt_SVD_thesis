@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Chapter 6 experiment suite aligned with the authoritative Chapters 1--5 algorithms.
+Chapter 6 experiments are implementations of Chapters 1--5 algorithms.
 
 The randomized TT method is not reimplemented here. All RTT-SVD calls go through
 ``tt_core.rtt_svd_rounded``: Chapter 5 Algorithm 7 (right-to-left, independent
@@ -663,8 +663,8 @@ def experiment_01_accuracy_vs_bond_dimension() -> dict:
     p = 10
     n_trials = _profile_count(10, 2, 20)
     models = [
-        ("exponential", "exp", {"alpha": 0.8}, "Exponential Singular Value Decay"),
-        ("polynomial", "poly", {"beta": 2.0}, "Polynomial Singular Value Decay"),
+        ("exponential", "exp", {"alpha": 0.8},r"Exponential decay ($\alpha=0.8$)"),
+    ("polynomial", "poly", {"beta": 2.0},r"Polynomial decay ($\beta=2.0$)"),
     ]
 
     raw: List[dict] = []
@@ -731,8 +731,8 @@ def experiment_01_accuracy_vs_bond_dimension() -> dict:
         lo, hi = _positive_band(rt_m, rt_s)
         ax.fill_between(x, lo, hi, color=COLORS["blue"], alpha=0.15)
         ax.set_title(panel_title)
-        ax.set_xlabel("Bond Dimension r")
-        ax.set_ylabel("Relative Frobenius Error")
+        ax.set_xlabel(r"Target TT rank $r$")
+        ax.set_ylabel(r"Relative error $\varepsilon$")
         ax.set_xticks(ranks)
         style_axis(ax, log_grid=True)
         ax.legend(frameon=False)
@@ -803,22 +803,22 @@ def experiment_02_oversampling_parameter_study() -> dict:
     em, es = np.asarray(error_mean), np.asarray(error_std)
     tm, ts = np.asarray(time_mean), np.asarray(time_std)
 
-    axes[0].semilogy(x, em, "o-", color=COLORS["blue"], label="RTT-SVD Error")
+    axes[0].semilogy(x, em, "o-", color=COLORS["blue"], label="RTT-SVD")
     lo, hi = _positive_band(em, es)
     axes[0].fill_between(x, lo, hi, color=COLORS["blue"], alpha=0.18)
-    axes[0].axhline(tt_error, linestyle="--", color=COLORS["grey"], label="TT-SVD (reference)")
-    axes[0].set_title("Error vs Oversampling Parameter")
-    axes[0].set_xlabel("Oversampling p")
-    axes[0].set_ylabel("Relative Frobenius Error")
+    axes[0].axhline(tt_error, linestyle="--", color=COLORS["grey"], label="TT-SVD reference")
+    axes[0].set_title(r"Relative error as a function of $p$")
+    axes[0].set_xlabel(r"Oversampling $p$")
+    axes[0].set_ylabel(r"Relative error $\varepsilon$")
     axes[0].set_xticks(p_values)
     style_axis(axes[0], log_grid=True)
     axes[0].legend(frameon=False)
 
-    axes[1].plot(x, tm, "o-", color=COLORS["blue"], label="RTT-SVD Time")
+    axes[1].plot(x, tm, "o-", color=COLORS["blue"], label="RTT-SVD")
     axes[1].fill_between(x, np.maximum(tm - ts, 0.0), tm + ts, color=COLORS["blue"], alpha=0.18)
-    axes[1].set_title("Computation Time vs Oversampling Parameter")
-    axes[1].set_xlabel("Oversampling p")
-    axes[1].set_ylabel("Wall-Clock Time (s)")
+    axes[1].set_title(r"Runtime as a function of $p$")
+    axes[1].set_xlabel(r"Oversampling $p$")
+    axes[1].set_ylabel(r"Wall-Clock Time (s)")
     axes[1].set_xticks(p_values)
     style_axis(axes[1])
     axes[1].legend(frameon=False)
@@ -920,19 +920,19 @@ def experiment_03_runtime_vs_tensor_order() -> dict:
     axes[0].fill_between(x, lo, hi, color=COLORS["orange"], alpha=0.15)
     lo, hi = _positive_band(rt_m, rt_s)
     axes[0].fill_between(x, lo, hi, color=COLORS["blue"], alpha=0.15)
-    axes[0].set_title("Computation Time vs Tensor Order")
-    axes[0].set_xlabel("Tensor Order d")
-    axes[0].set_ylabel("Wall-Clock Time (s)")
+    axes[0].set_title(r"Runtime as a function of tensor order $d$")
+    axes[0].set_xlabel(r"Tensor order $d$")
+    axes[0].set_ylabel(r"Wall-Clock Time (s)")
     axes[0].set_xticks(orders)
     style_axis(axes[0], log_grid=True)
     axes[0].legend(frameon=False)
 
     axes[1].plot(x, sp_m, "o-", color=COLORS["blue"])
     axes[1].fill_between(x, np.maximum(sp_m - sp_s, 0.0), sp_m + sp_s, color=COLORS["blue"], alpha=0.18)
-    axes[1].axhline(1.0, linestyle="--", color=COLORS["grey"], linewidth=1.0)
-    axes[1].set_title("Speedup vs Tensor Order")
-    axes[1].set_xlabel("Tensor Order d")
-    axes[1].set_ylabel("Speedup (TT-SVD / RTT-SVD)")
+    axes[1].axhline(1.0, linestyle="--", color=COLORS["grey"], linewidth=1.0, label=r"$S=1$")
+    axes[1].set_title(r"Speedup as a function of $d$")
+    axes[1].set_xlabel(r"Tensor order $d$")
+    axes[1].set_ylabel(r"Speedup $S$")
     axes[1].set_xticks(orders)
     style_axis(axes[1])
 
@@ -1182,10 +1182,10 @@ def experiment_04_sparse_rtt_svd_complexity() -> dict:
     )
 
     axes[0].set_title(
-        "Sparse RTT-SVD Runtime vs Tensor Order"
+        r"Sparse Runtime per Tensor Order $d$"
     )
-    axes[0].set_xlabel("Tensor Order d")
-    axes[0].set_ylabel("Wall-Clock Time (s)")
+    axes[0].set_xlabel(r"Tensor order $d$")
+    axes[0].set_ylabel("Wall-clock time (s)")
     axes[0].set_xticks(orders)
     style_axis(axes[0])
     axes[0].legend(frameon=False)
@@ -1204,8 +1204,8 @@ def experiment_04_sparse_rtt_svd_complexity() -> dict:
     axes[1].set_title(
         "Runtime per Tensor Mode"
     )
-    axes[1].set_xlabel("Tensor Order d")
-    axes[1].set_ylabel("Wall-Clock Time / d (s)")
+    axes[1].set_xlabel(r"Tensor order $d$")
+    axes[1].set_ylabel(r"Wall-clock time per mode (s)")
     axes[1].set_xticks(orders)
     style_axis(axes[1])
     axes[1].legend(frameon=False)
@@ -1322,26 +1322,27 @@ def experiment_05_scalability_vs_mode_size() -> dict:
 
     axes[0].semilogy(x, tt_tm, "o-", color=COLORS["orange"], label="TT-SVD")
     axes[0].semilogy(x, rt_tm, "o--", color=COLORS["blue"], label="RTT-SVD")
-    axes[0].set_title("Computation Time vs Mode Size")
-    axes[0].set_xlabel("Mode Size n")
-    axes[0].set_ylabel("Wall-Clock Time (s)")
+    axes[0].set_title(r"Runtime per Mode Size $n$")
+    axes[0].set_xlabel(r"Mode size $n$")
+    axes[0].set_ylabel(r"Wall-clock time (s)")
     style_axis(axes[0], log_grid=True)
     axes[0].legend(frameon=False)
 
     axes[1].semilogy(x, tt_em, "o-", color=COLORS["orange"], label="TT-SVD")
     axes[1].semilogy(x, rt_em, "o--", color=COLORS["blue"], label="RTT-SVD")
-    axes[1].set_title("Approximation Error vs Mode Size")
-    axes[1].set_xlabel("Mode Size n")
-    axes[1].set_ylabel("Relative Frobenius Error")
+    axes[1].set_title(r"Relative Error per Mode Size $n$")
+    axes[1].set_xlabel(r"Mode size $n$")
+    axes[1].set_ylabel(r"Relative error $\varepsilon$")
     style_axis(axes[1], log_grid=True)
     axes[1].legend(frameon=False)
 
     axes[2].plot(x, sp_m, "o-", color=COLORS["blue"])
-    axes[2].axhline(1.0, linestyle="--", color=COLORS["grey"], linewidth=1.0)
-    axes[2].set_title("Speedup vs Mode Size")
-    axes[2].set_xlabel("Mode Size n")
-    axes[2].set_ylabel("Speedup")
+    axes[2].axhline(1.0, linestyle="--", color=COLORS["grey"], linewidth=1.0, label=r"$S=1$")
+    axes[2].set_title(r"Speedup per Mode Size $n$")
+    axes[2].set_xlabel(r"Mode size $n$")
+    axes[2].set_ylabel(r"Speedup $S$")
     style_axis(axes[2])
+    axes[2].legend(frameon=False)
 
     # fig.suptitle(f"Scalability vs Mode Size (d = {d}, r = {r}, p = {p})", y=1.01)
     fig.tight_layout()
@@ -1424,8 +1425,8 @@ def experiment_06_robustness_to_additive_noise() -> dict:
     ax.fill_between(x, lo, hi, color=COLORS["orange"], alpha=0.16)
     lo, hi = _positive_band(rt_m, rt_s)
     ax.fill_between(x, lo, hi, color=COLORS["blue"], alpha=0.16)
-    ax.set_xlabel("Signal-to-Noise Ratio (dB)")
-    ax.set_ylabel("Relative Error w.r.t. Clean Tensor")
+    ax.set_xlabel("SNR (dB)")
+    ax.set_ylabel(r"Relative error $\varepsilon$")
     ax.set_xticks(snr_values)
     
     style_axis(ax, log_grid=True)
@@ -1449,7 +1450,7 @@ def experiment_07_method_comparison() -> dict:
     n_trials = _profile_count(6, 2, 12)
     A = generate_random_tt_tensor(shape, source_rank, seed=BASE_SEED + 600, normalize=True)
 
-    methods = ["RTT-SVD", "TT-SVD", "Rand-Tucker"]
+    methods = ["RTT-SVD", "TT-SVD", "Randomized Tucker"]
     errors = {m: [] for m in methods}
     times = {m: [] for m in methods}
     storage: dict[str, int] = {}
@@ -1476,11 +1477,11 @@ def experiment_07_method_comparison() -> dict:
         trial_values = {
             "RTT-SVD": (e_rtt, t_rtt),
             "TT-SVD": (e_tt, t_tt),
-            "Rand-Tucker": (e_tucker, t_tucker),
+            "Randomized Tucker": (e_tucker, t_tucker),
         }
         storage["RTT-SVD"] = rtt.storage()
         storage["TT-SVD"] = tt.storage()
-        storage["Rand-Tucker"] = tucker_storage(factors, core)
+        storage["Randomized Tucker"] = tucker_storage(factors, core)
 
         for method, (err, elapsed) in trial_values.items():
             errors[method].append(err)
@@ -1493,7 +1494,7 @@ def experiment_07_method_comparison() -> dict:
                 "storage": storage[method],
                 "compression_ratio": A.size / storage[method],
                 "rtt_seed": seed_rtt if method == "RTT-SVD" else "",
-                "tucker_seed": seed_tucker if method == "Rand-Tucker" else "",
+                "tucker_seed": seed_tucker if method == "Randomized Tucker" else "",
             })
 
     error_mean = [mean_std(errors[m])[0] for m in methods]
@@ -1526,19 +1527,19 @@ def experiment_07_method_comparison() -> dict:
     bar_colors = [COLORS["blue"], COLORS["orange"], COLORS["green"]]
     axes[0].bar(x, error_mean, yerr=error_std, capsize=3, color=bar_colors, alpha=0.85)
     axes[0].set_xticks(x, methods, rotation=12)
-    axes[0].set_ylabel("Relative Frobenius Error")
+    axes[0].set_ylabel(r"Relative error $\varepsilon$")
     axes[0].set_title("Approximation Error")
     style_axis(axes[0])
 
     axes[1].bar(x, time_mean, yerr=time_std, capsize=3, color=bar_colors, alpha=0.85)
     axes[1].set_xticks(x, methods, rotation=12)
-    axes[1].set_ylabel("Wall-Clock Time (s)")
-    axes[1].set_title("Computation Time")
+    axes[1].set_ylabel(r"Wall-clock time (s)")
+    axes[1].set_title("Runtime")
     style_axis(axes[1])
 
     axes[2].bar(x, ratios, color=bar_colors, alpha=0.85)
     axes[2].set_xticks(x, methods, rotation=12)
-    axes[2].set_ylabel("Compression Ratio")
+    axes[2].set_ylabel(r"Compression ratio $\rho$")
     axes[2].set_title("Compression Ratio")
     style_axis(axes[2])
 
@@ -1561,11 +1562,11 @@ def experiment_08_singular_value_decay() -> dict:
 
     shape = (32, 32, 32, 32)
     specifications = [
-        ("Exponential ($\\alpha = 0.5$)", "exp", {"alpha": 0.5}),
-        ("Exponential ($\\alpha = 1.0$)", "exp", {"alpha": 1.0}),
-        ("Polynomial ($\\beta = 1.5$)", "poly", {"beta": 1.5}),
-        ("Polynomial ($\\beta = 3.0$)", "poly", {"beta": 3.0}),
-    ]
+    (r"Exponential decay ($\alpha = 0.5$)", "exp", {"alpha": 0.5}),
+    (r"Exponential decay ($\alpha = 1.0$)", "exp", {"alpha": 1.0}),
+    (r"Polynomial decay ($\beta = 1.5$)", "poly", {"beta": 1.5}),
+    (r"Polynomial decay ($\beta = 3.0$)", "poly", {"beta": 3.0}),
+]
     threshold = 1e-3
     spectra: dict[str, list[float]] = {}
     raw: List[dict] = []
@@ -1594,13 +1595,13 @@ def experiment_08_singular_value_decay() -> dict:
         vals_arr = np.asarray(vals)
         j = np.arange(1, vals_arr.size + 1)
         ax.semilogy(j, vals_arr, "-", color=COLORS["blue"])
-        ax.axhline(threshold, linestyle="--", color=COLORS["grey"], label=r"$10^{-3}$ threshold")
+        ax.axhline(threshold, linestyle="--", color=COLORS["grey"], label=r"$10^{-3}$")
         ax.set_title(label)
-        ax.set_xlabel("Singular Value Index j")
-        ax.set_ylabel(r"$\sigma_j/\sigma_1$ (normalised)")
+        ax.set_xlabel(r"Singular Value Index $j$")
+        ax.set_ylabel(r"$\sigma_j/\sigma_1$")
         style_axis(ax, log_grid=True)
         ax.legend(frameon=False)
-    # fig.suptitle(r"Mode-1 Singular Value Decay for Different Tensor Types (shape $32^4$)", y=1.01)
+    
     fig.tight_layout()
     save_figure(fig, "exp08_singular_value_decay")
     return result
@@ -1669,13 +1670,20 @@ def experiment_09_error_concentration() -> dict:
 
     fig, ax = plt.subplots(figsize=(7.7, 4.9))
     data = [distributions[p] for p in p_values]
-    bp = ax.boxplot(data, tick_labels=[f"p = {p}" for p in p_values], showfliers=True, patch_artist=True)
+    bp = ax.boxplot(data, tick_labels=[str(p) for p in p_values], showfliers=True, patch_artist=True)
     for box in bp["boxes"]:
         box.set_facecolor(COLORS["sky"])
         box.set_alpha(0.45)
-    ax.axhline(0.0, linestyle="--", color=COLORS["orange"], label="TT-SVD reference")
-    ax.set_xlabel("Oversampling Parameter")
-    ax.set_ylabel(r"Excess Relative Error, $10^6(\varepsilon_{\mathrm{RTT}}-\varepsilon_{\mathrm{TT}})$")
+    ax.axhline(
+    0.0,
+    linestyle="--",
+    color=COLORS["orange"],
+    label=r"$\varepsilon_{\mathrm{RTT}}=\varepsilon_{\mathrm{TT}}$"
+)
+    ax.set_xlabel(r"Oversampling $p$")
+    ax.set_ylabel(
+    r"$10^6(\varepsilon_{\mathrm{RTT}}-\varepsilon_{\mathrm{TT}})$"
+)
     
     style_axis(ax)
     ax.legend(frameon=False)
@@ -1744,13 +1752,13 @@ def experiment_10_storage_accuracy_tradeoff() -> dict:
     fig, ax = plt.subplots(figsize=(7.6, 4.9))
     x = np.asarray(storage_fraction)
     ax.semilogy(x, tt_error, "o-", color=COLORS["orange"], label="TT-SVD")
-    ax.semilogy(x, rtt_mean, "o--", color=COLORS["blue"], label=f"RTT-SVD (p = {p})")
+    ax.semilogy(x, rtt_mean, "o--", color=COLORS["blue"], label=rf"RTT-SVD (p = {p})")
     for r in [1, 3, 5, 7, 9, 11, 13]:
         idx = ranks.index(r)
-        ax.annotate(f"r = {r}", (x[idx], rtt_mean[idx]), xytext=(4, 4), textcoords="offset points", fontsize=8)
-    ax.set_xlabel("Storage Fraction (compressed / original)")
-    ax.set_ylabel("Relative Frobenius Error")
-    ax.set_title(r"Storage-Accuracy Trade-off (Pareto Front)" + "\n" + r"(shape $16^4$, exponential decay)")
+        ax.annotate(rf"r = {r}", (x[idx], rtt_mean[idx]), xytext=(4, 4), textcoords="offset points", fontsize=8)
+    ax.set_xlabel(r"TT storage fraction $\rho_{\mathrm{store}}$")
+    ax.set_ylabel(r"Relative Error $\varepsilon$")
+    
     style_axis(ax, log_grid=True)
     ax.legend(frameon=False)
     fig.tight_layout()
@@ -1824,11 +1832,11 @@ def experiment_11_gaussian_rangefinder_bound() -> dict:
     x = np.asarray(p_values)
     mean_arr = np.asarray(means)
     std_arr = np.asarray(stds)
-    ax.semilogy(x, expected_bounds, "s--", color=COLORS["orange"], label="Expected Frobenius Bound")
-    ax.axhline(rank_r_tail, linestyle="--", color=COLORS["green"], label="Optimal Rank-r Tail")
-    ax.errorbar(x, mean_arr, yerr=std_arr, fmt="o-", color=COLORS["blue"], capsize=3, label="Empirical Mean Residual")
-    ax.set_xlabel("Oversampling p")
-    ax.set_ylabel("Relative Frobenius Residual")
+    ax.semilogy(x, expected_bounds, "s--", color=COLORS["orange"], label="Expected Bound")
+    ax.axhline(rank_r_tail, linestyle="--", color=COLORS["green"], label="Rank-r Tail")
+    ax.errorbar(x, mean_arr, yerr=std_arr, fmt="o-", color=COLORS["blue"], capsize=3, label="Empirical Mean")
+    ax.set_xlabel("Oversampling $p$")
+    ax.set_ylabel( r"$\|M-QQ^\top M\|_F/\|M\|_F$")
     ax.set_xticks(p_values)
     
     style_axis(ax, log_grid=True)
