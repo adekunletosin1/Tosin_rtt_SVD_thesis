@@ -17,6 +17,30 @@ The final Chapter 6 results are stored in:
 results_chapter6_final/
 ```
 
+## Repository structure
+
+The final repository has the following structure:
+
+```text
+Tosin_rtt_SVD_thesis/
+│
+├── .gitignore
+├── README.md
+├── requirements.txt
+│
+├── rtt_SVD_thesis/
+│   ├── __init__.py
+│   ├── alignment_manifest.json
+│   ├── chapter6_experiments.py
+│   ├── experiments.py
+│   ├── self_test.py
+│   ├── sparse_rtt_svd.py
+│   └── tt_core.py
+│
+└── results_chapter6_final/
+    ├── data/
+    └── figures/
+
 ## Thesis-to-code map
 
 | Thesis item | Python implementation |
@@ -75,30 +99,6 @@ The complete experiment suite can be started from the repository root with:
 ```powershell
 python -m rtt_SVD_thesis.chapter6_experiments
 ```
-
-## Repository structure
-
-The final repository has the following structure:
-
-```text
-Tosin_rtt_SVD_thesis/
-│
-├── .gitignore
-├── README.md
-├── requirements.txt
-│
-├── rtt_SVD_thesis/
-│   ├── __init__.py
-│   ├── alignment_manifest.json
-│   ├── chapter6_experiments.py
-│   ├── experiments.py
-│   ├── self_test.py
-│   ├── sparse_rtt_svd.py
-│   └── tt_core.py
-│
-└── results_chapter6_final/
-    ├── data/
-    └── figures/
 
     ## Numerical output
 
