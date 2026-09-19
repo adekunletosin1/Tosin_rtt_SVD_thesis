@@ -1,4 +1,4 @@
-# Randomized TT-SVD Thesis Implementation
+# RTT-SVD Thesis Implementation
 
 This repository contains the Python implementation and numerical experiments for the master's thesis:
 
