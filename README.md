@@ -101,7 +101,7 @@ The complete experiment suite can be started from the repository root with:
 python -m rtt_SVD_thesis.chapter6_experiments
 ```
 
-    ## Numerical output
+## Numerical output
 
 The experiment results are stored in:
 
