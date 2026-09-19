@@ -1833,7 +1833,7 @@ def experiment_11_gaussian_rangefinder_bound() -> dict:
     mean_arr = np.asarray(means)
     std_arr = np.asarray(stds)
     ax.semilogy(x, expected_bounds, "s--", color=COLORS["orange"], label="Expected Bound")
-    ax.axhline(rank_r_tail, linestyle="--", color=COLORS["green"], label="Rank-r Tail")
+    ax.axhline(rank_r_tail, linestyle="--", color=COLORS["green"], label="Optimal Rank-r Tail")
     ax.errorbar(x, mean_arr, yerr=std_arr, fmt="o-", color=COLORS["blue"], capsize=3, label="Empirical Mean")
     ax.set_xlabel("Oversampling $p$")
     ax.set_ylabel( r"$\|M-QQ^\top M\|_F/\|M\|_F$")
